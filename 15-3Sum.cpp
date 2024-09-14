@@ -12,9 +12,9 @@ public:
                 if (sum == comp) {
                     res.push_back({nums[k], nums[i], nums[j]});
                     while (i<j&&nums[i]==nums[i+1])i++;
-                    while (i<j&&nums[j]==nums[j-1])j--;
+                   // while (i<j&&nums[j]==nums[j-1])j--;
                     i++;
-                    j--;
+                    //j--;
                 } 
                 else if (sum < comp) {
                     i++;
