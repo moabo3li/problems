@@ -11,27 +11,28 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        stack<ListNode*>st;
-        ListNode* temp=head;
-        ListNode* td;
-        while(temp){
-            st.push(temp);
-            temp=temp->next;
-        }
-        for(int i=0;i<n-1;i++){
-            st.pop();
-        }
-        td=st.top();
-        temp=st.top()->next;
-        st.pop();
-        if(!st.empty()){
-        st.top()->next=temp;
-        delete td;
-        return head;
-        }
-        else {
-        delete td;
-        return temp;
-        }
+       ListNode* slow=head;
+       ListNode* fast=head;
+       if(!head||!head->next)return NULL;
+       for(int i=0;i<n;i++){
+        fast=fast->next;    
+       } 
+       ListNode* prev=NULL;
+       while (fast){
+        prev=slow;
+        slow=slow->next;
+        fast=fast->next;
+       }ListNode*temp;
+       if(!prev){
+        head=head->next;
+        delete slow;
+       }else{
+        slow;
+        prev->next=prev->next->next;
+        delete slow;
+       }
+       return head;
+       
+       
     }
 };
